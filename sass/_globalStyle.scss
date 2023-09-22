@@ -1,0 +1,129 @@
+//This fill Containe Global
+//Colors
+
+
+//Start Colors
+$blueColor : #08526d;
+$redColor : #ec1c23;
+$greyColor : #bfc6c9;
+$pColorGrey : #989898;
+$smawyColor: #f0f5f7;
+$time-trans-5s : .5sec;
+//End Colors
+
+//Start Scroll
+html {
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: $blueColor;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $redColor;
+}
+//End Scroll
+
+//Start Sections Formating
+@mixin fixedBackgroundPadding($padding , $color, $mrgBottom)
+{
+    background-color: $color;
+    padding: $padding 0;
+    h2{
+        font-size: 40px;
+        font-weight: bold;
+        text-transform: capitalize;
+        margin-bottom: 30px;
+        color : $blueColor;
+        + p {
+            line-height: 1.6;
+            font-size: 20px;
+            color: $pColorGrey;
+            width: 80%;
+            margin : 0 auto $mrgBottom;            
+        }
+        @include mediaP("md"){
+            margin-bottom: 15px;
+            + p{
+                width: 100%;
+            }
+        }
+    }
+}
+
+@mixin overLay(){
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    right: 0;
+    background-color: rgba($color: #000, $alpha: 0.6);
+    z-index: 1;
+}
+//End Sections Formating
+
+//Start Slider indicators
+@mixin indicatorsEdit(){
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0) !important;
+    border: 1px solid $redColor;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    &:hover,&.active{
+        background-color: $redColor !important;
+    }
+}
+//End Slider Indicators
+
+//Start Time transition
+@mixin timetrans($transtime){
+   transition: all $transtime ease-in-out;
+   -webkit-transition: all $transtime ease-in-out;
+   -moz-transition: all $transtime ease-in-out;
+   -ms-transition: all $transtime ease-in-out;
+   -o-transition: all $transtime ease-in-out;
+}
+
+//End Time transition
+
+//Start Links
+a{
+    text-decoration: none;
+    color: white;
+}
+//End Links
+
+//start media
+
+@mixin mediaP($point){
+    @if $point == "sm"{
+        @media (max-width: 767px){
+            @content;
+        }
+    }@else if $point == "md"{
+        @media (max-width: 991px){
+            @content;
+        }
+    }@else if $point == "xl"{
+        @media (max-width: 1199px){
+            @content;
+        }
+    }@else if $point == "xxl"{
+        @media (min-width: 1200px){
+            @content;
+        }
+    }@else{
+        @media (max-width: 575px){
+            @content;
+        }
+    }
+}
+//End Media
